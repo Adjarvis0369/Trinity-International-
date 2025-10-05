@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="logo.png" />
+    <title>About Us - Trinity International</title>
+    <script
+      type="text/javascript"
+      src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  </head>
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #ffffff;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Navigation */
+    .navbar {
+      background-color: #ffffff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-logo img {
+      height: 70px;
+      width: auto;
+    }
+
+    .nav-logo h2 {
+      color: #054187;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: #64748b;
+      font-weight: 500;
+      padding: 0.5rem 0;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #054187;
+    }
+
+    .nav-link.active::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #054187;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger .bar {
+      width: 25px;
+      height: 3px;
+      background-color: #054187;
+      margin: 3px 0;
+      transition: 0.3s;
+    }
+
+    /* Page Header */
+    .page-header {
+      padding: 120px 0 60px;
+      background: linear-gradient(135deg, #054187 0%, #1d4ed8 100%);
+      color: white;
+      text-align: center;
+      margin-top: 70px;
+    }
+
+    .page-header h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .page-header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    /* Company Section */
+    .Company {
+      padding: 80px 0;
+      background-color: #ffffff;
+    }
+
+    .Company-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .Company-text h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 2rem;
+    }
+
+    .Company-text p {
+      color: #64748b;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    .Company-image {
+      display: flex;
+      justify-content: center;
+    }
+
+    .Company-placeholder {
+      width: 350px;
+      height: 250px;
+      background: linear-gradient(135deg, #054187 0%, #1d4ed8 100%);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 40px rgba(37, 99, 235, 0.2);
+    }
+
+    .Company-placeholder svg {
+      width: 100px;
+      height: 100px;
+      color: white;
+    }
+
+    /* Services Section */
+    .services {
+      padding: 80px 0;
+      background-color: #f8fafc;
+    }
+
+    .services h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 3rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .service-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      border-top: 4px solid #054187;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .service-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #054187 0%, #1d4ed8 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-icon svg {
+      width: 30px;
+      height: 30px;
+      color: white;
+    }
+
+    .service-card h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 1rem;
+    }
+
+    .service-card p {
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    /* Expertise Section */
+    .expertise {
+      padding: 80px 0;
+      background-color: #f8fafc;
+    }
+
+    .expertise h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 3rem;
+    }
+
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+    }
+
+    .expertise-item {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s ease;
+      border: 1px solid #e2e8f0;
+    }
+
+    .expertise-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      border-color: #054187;
+    }
+
+    .expertise-item h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #1e293b;
+      line-height: 1.4;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #000000;
+      color: white;
+      padding: 60px 0 30px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-section h3,
+    .footer-section h4 {
+      margin-bottom: 1rem;
+      color: #054187;
+    }
+
+    .footer-section h3 {
+      font-size: 1.4rem;
+    }
+
+    .footer-section h4 {
+      font-size: 1.2rem;
+    }
+
+    .footer-section p {
+      color: #ffffff;
+      line-height: 1.6;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-section ul li a {
+      color: #ffffff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section ul li a:hover {
+      color: #054187;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #374151;
+      padding-top: 2rem;
+      text-align: center;
+    }
+
+    .footer-bottom p {
+      color: #94a3b8;
+    }
+
+    /* Animation Classes */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Form Validation States */
+    .form-group input.error,
+    .form-group select.error,
+    .form-group textarea.error {
+      border-color: #ef4444;
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+    }
+
+    .form-group input.success,
+    .form-group select.success,
+    .form-group textarea.success {
+      border-color: #10b981;
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+    }
+
+    /* ===============================
+   Responsive Design (Mobile)
+   =============================== */
+    @media (max-width: 900px) {
+      .nav-menu {
+        gap: 1.2rem;
+      }
+      .page-header h1 {
+        font-size: 2.4rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      /* NAVIGATION */
+      .nav-container {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        height: auto;
+      }
+
+      .nav-logo img {
+        height: 55px;
+      }
+
+      .nav-menu {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 1.5rem 0;
+        display: none;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-menu.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      /* Animate hamburger */
+      .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.active .bar:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+      }
+      .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+      }
+
+      /* Translate dropdown styling inside navbar */
+      #google_translate_element {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+        background-color: #f8fafc;
+        border-top: 1px solid #e2e8f0;
+        padding: 10px 0;
+      }
+
+      /* Make the translate box smaller */
+      .goog-te-gadget {
+        font-size: 12px !important;
+      }
+
+      /* Page header */
+      .page-header {
+        padding: 100px 10px 50px;
+      }
+
+      .page-header h1 {
+        font-size: 2rem;
+      }
+
+      .Company-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .Company-placeholder {
+        width: 90%;
+        height: 200px;
+      }
+
+      .services-grid,
+      .expertise-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card,
+      .expertise-item {
+        margin: 0 auto;
+        width: 90%;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .footer-section {
+        margin-bottom: 1.5rem;
+      }
+    }
+  </style>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <img
+            src="Trinity International_logo.png"
+            alt="Trinity International Logo" />
+          <h2>Trinity International</h2>
+        </div>
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="about.html" class="nav-link active">About</a>
+          </li>
+          <li class="nav-item">
+            <a href="contact.html" class="nav-link">Contact</a>
+          </li>
+        </ul>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <div id="google_translate_element">Translate this page:</div>
+      </div>
+    </nav>
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="container">
+        <h1>About Trinity International</h1>
+        <p>Your trusted partner in Gulf region talent acquisition</p>
+      </div>
+    </section>
+
+    <!-- Company Section -->
+    <section class="Company">
+      <div class="container">
+        <div class="Company-content">
+          <div class="Company-text">
+            <h2>Our Company</h2>
+            <p>
+              Mr. Chetan Tanwar (CEO), having Bachelor of Commerce (B.Com)
+              degree with a specialization in Human Resource Management. Having
+              15 years of experience regarding manpower consultancy
+              and recruitment.
+            </p>
+            <p>
+              Our comprehensive approach ensures that both employers and job
+              seekers benefit from our extensive network and industry knowledge,
+              creating lasting partnerships that drive success across the
+              region.
+            </p>
+          </div>
+          <div class="Company-image">
+            <div class="Company-placeholder">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2L2 7L12 12L22 7L12 2ZM2 17L12 22L22 17M2 12L12 17L22 12" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+      <div class="container">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19ZM7 7H17V9H7V7ZM7 11H17V13H7V11ZM7 15H13V17H7V15Z" />
+              </svg>
+            </div>
+            <h3>Job News Distribution</h3>
+            <p>
+              We spread company job news across our extensive network, ensuring
+              maximum visibility for your opportunities and reaching qualified
+              candidates throughout the Gulf region.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 12C14.21 12 16 10.21 16 8S14.21 4 12 4 8 5.79 8 8 9.79 12 12 12ZM21 16V14L19.32 12.64C19.75 11.89 20 11.02 20 10.1C20 7.79 18.21 6 15.9 6C14.61 6 13.5 6.59 12.92 7.5C12.34 6.59 11.23 6 9.94 6C7.63 6 5.84 7.79 5.84 10.1C5.84 11.02 6.09 11.89 6.52 12.64L4.84 14V16L6.5 17.5L8.16 16V14L9.84 12.5C10.27 13.25 10.52 14.12 10.52 15C10.52 17.31 12.31 19.1 14.62 19.1S18.72 17.31 18.72 15C18.72 14.12 18.47 13.25 18.04 12.5L19.72 14V16L21 16Z" />
+              </svg>
+            </div>
+            <h3>Interview Coordination</h3>
+            <p>
+              Our team organizes and coordinates interviews between employers
+              and candidates, streamlining the recruitment process and ensuring
+              efficient scheduling.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M16 4C16.55 4 17 4.45 17 5V7H19C19.55 7 20 7.45 20 8S19.55 9 19 9H17V11C17 11.55 16.55 12 16 12S15 11.55 15 11V9H13C12.45 9 12 8.55 12 8S12.45 7 13 7H15V5C15 4.45 15.45 4 16 4ZM8 12C10.21 12 12 10.21 12 8S10.21 4 8 4 4 5.79 4 8 5.79 12 8 12ZM8 14C5.33 14 0 15.34 0 18V20H16V18C16 15.34 10.67 14 8 14Z" />
+              </svg>
+            </div>
+            <h3>HR Bridge Services</h3>
+            <p>
+              We act as a bridge between HR departments and skilled
+              professionals, facilitating smooth communication and ensuring the
+              right match for both parties.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section class="expertise">
+      <div class="container">
+        <h2>Our Expertise Categories</h2>
+        <div class="expertise-grid">
+          <div class="expertise-item">
+            <h4>Oil & Gas Industries</h4>
+          </div>
+          <div class="expertise-item">
+            <h4>Refineries (Petrochemicals / Fertilizers)</h4>
+          </div>
+          <div class="expertise-item">
+            <h4>Power Plants</h4>
+          </div>
+          <div class="expertise-item">
+            <h4>Power Generation & Distribution Services</h4>
+          </div>
+          <div class="expertise-item">
+            <h4>Ship Building & Repair Yards</h4>
+          </div>
+          <div class="expertise-item">
+            <h4>Heavy Engineering & Fabrication Industry</h4>
+          </div>
+          <div class="expertise-item">
+            <h4>Air-conditioning & Refrigeration Industry</h4>
+          </div>
+          <div class="expertise-item">
+            <h4>Electro Mechanical Project (MEP)</h4>
+          </div>
+          <div class="expertise-item">
+            <h4>Civil Construction Industry</h4>
+          </div>
+          <div class="expertise-item">
+            <h4>Infrastructure Industry & Project</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Trinity International</h3>
+            <p>Connecting Talent with Opportunities in the Gulf</p>
+          </div>
+          <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Contact Info</h4>
+            <p>Email: resumetrinity@yahoo.com</p>
+            <p>Phone: +91 8460597949</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; Trinity International. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // --- Mobile Menu Toggle ---
+      const hamburger = document.querySelector(".hamburger");
+      const navMenu = document.querySelector(".nav-menu");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+      });
+
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: "en",
+            includedLanguages: "en,hi,ar", // Only English, Hindi, Arabic
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+          },
+          "google_translate_element"
+        );
+      }
+      x;
+
+      // Close mobile menu when clicking on a link
+      document.querySelectorAll(".nav-link").forEach((n) =>
+        n.addEventListener("click", () => {
+          hamburger.classList.remove("active");
+          navMenu.classList.remove("active");
+        })
+      );
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Contact Form Handling
+      const contactForm = document.getElementById("contactForm");
+      const formSuccess = document.getElementById("formSuccess");
+
+      if (contactForm) {
+        contactForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Reset previous validation states
+          resetFormValidation();
+
+          // Validate form
+          let isValid = validateForm();
+
+          if (isValid) {
+            // Show success message
+            contactForm.style.display = "none";
+            formSuccess.style.display = "block";
+
+            // Reset form after 3 seconds
+            setTimeout(() => {
+              contactForm.reset();
+              contactForm.style.display = "block";
+              formSuccess.style.display = "none";
+              resetFormValidation();
+            }, 3000);
+          }
+        });
+      }
+
+      // Form validation functions
+      function validateForm() {
+        let isValid = true;
+
+        // Name validation
+        const name = document.getElementById("name");
+        if (name && !name.value.trim()) {
+          showError("nameError", "Name is required");
+          name.classList.add("error");
+          isValid = false;
+        } else if (name) {
+          name.classList.add("success");
+        }
+
+        // Email validation
+        const email = document.getElementById("email");
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (email && !email.value.trim()) {
+          showError("emailError", "Email is required");
+          email.classList.add("error");
+          isValid = false;
+        } else if (email && !emailRegex.test(email.value)) {
+          showError("emailError", "Please enter a valid email address");
+          email.classList.add("error");
+          isValid = false;
+        } else if (email) {
+          email.classList.add("success");
+        }
+
+        // Subject validation
+        const subject = document.getElementById("subject");
+        if (subject && !subject.value) {
+          showError("subjectError", "Please select a subject");
+          subject.classList.add("error");
+          isValid = false;
+        } else if (subject) {
+          subject.classList.add("success");
+        }
+
+        // Message validation
+        const message = document.getElementById("message");
+        if (message && !message.value.trim()) {
+          showError("messageError", "Message is required");
+          message.classList.add("error");
+          isValid = false;
+        } else if (message && message.value.trim().length < 10) {
+          showError(
+            "messageError",
+            "Message must be at least 10 characters long"
+          );
+          message.classList.add("error");
+          isValid = false;
+        } else if (message) {
+          message.classList.add("success");
+        }
+
+        return isValid;
+      }
+
+      function showError(elementId, message) {
+        const errorElement = document.getElementById(elementId);
+        if (errorElement) {
+          errorElement.textContent = message;
+          errorElement.style.display = "block";
+        }
+      }
+
+      function resetFormValidation() {
+        // Reset all error messages
+        const errorMessages = document.querySelectorAll(".error-message");
+        errorMessages.forEach((error) => {
+          error.style.display = "none";
+          error.textContent = "";
+        });
+
+        // Reset all input states
+        const inputs = document.querySelectorAll(
+          ".form-group input, .form-group select, .form-group textarea"
+        );
+        inputs.forEach((input) => {
+          input.classList.remove("error", "success");
+        });
+      }
+
+      // Fade in animation on scroll
+      function fadeInOnScroll() {
+        const elements = document.querySelectorAll(
+          ".feature-card, .news-card, .service-card, .timeline-item, .expertise-item"
+        );
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("fade-in");
+                setTimeout(() => {
+                  entry.target.classList.add("visible");
+                }, 100);
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px",
+          }
+        );
+
+        elements.forEach((element) => {
+          observer.observe(element);
+        });
+      }
+
+      // Initialize animations when DOM is loaded
+      document.addEventListener("DOMContentLoaded", () => {
+        fadeInOnScroll();
+
+        // Add loading animation to cards
+        const cards = document.querySelectorAll(
+          ".feature-card, .news-card, .service-card"
+        );
+        cards.forEach((card, index) => {
+          card.style.opacity = "0";
+          card.style.transform = "translateY(30px)";
+          setTimeout(() => {
+            card.style.transition = "all 0.6s ease";
+            card.style.opacity = "1";
+            card.style.transform = "translateY(0)";
+          }, index * 100 + 300);
+        });
+      });
+
+      // Navbar scroll effect
+      window.addEventListener("scroll", () => {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 100) {
+          navbar.style.backgroundColor = "rgba(255, 255, 255, 0.95)";
+          navbar.style.backdropFilter = "blur(10px)";
+        } else {
+          navbar.style.backgroundColor = "#ffffff";
+          navbar.style.backdropFilter = "none";
+        }
+      });
+
+      // Add click animations to buttons
+      document
+        .querySelectorAll(".cta-button, .submit-btn")
+        .forEach((button) => {
+          button.addEventListener("click", function (e) {
+            // Create ripple effect
+            const ripple = document.createElement("span");
+            ripple.style.position = "absolute";
+            ripple.style.borderRadius = "50%";
+            ripple.style.background = "rgba(255, 255, 255, 0.3)";
+            ripple.style.transform = "scale(0)";
+            ripple.style.animation = "ripple 0.6s linear";
+
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            ripple.style.width = ripple.style.height = size + "px";
+            ripple.style.left = e.clientX - rect.left - size / 2 + "px";
+            ripple.style.top = e.clientY - rect.top - size / 2 + "px";
+
+            this.appendChild(ripple);
+
+            setTimeout(() => {
+              ripple.remove();
+            }, 600);
+          });
+        });
+
+      // Add ripple animation CSS
+      const style = document.createElement("style");
+      style.textContent = `
+    @keyframes ripple {
+        to {
+            transform: scale(4);
+            opacity: 0;
+        }
+    }
+    
+    .cta-button, .submit-btn {
+        position: relative;
+        overflow: hidden;
+    }
+`;
+      document.head.appendChild(style);
+
+      // Form input focus effects
+      document
+        .querySelectorAll(
+          ".form-group input, .form-group select, .form-group textarea"
+        )
+        .forEach((input) => {
+          input.addEventListener("focus", function () {
+            this.parentElement.classList.add("focused");
+          });
+
+          input.addEventListener("blur", function () {
+            this.parentElement.classList.remove("focused");
+            if (this.value.trim()) {
+              this.parentElement.classList.add("filled");
+            } else {
+              this.parentElement.classList.remove("filled");
+            }
+          });
+        });
+
+      // Hero section slider
+      const hero = document.getElementById("hero");
+      const heroTitle = document.getElementById("hero-title");
+      const heroTagline = document.getElementById("hero-tagline");
+      const heroDescription = document.getElementById("hero-description");
+
+      const slides = [
+        {
+          image: "hero1.png",
+          title: "Trinity International",
+          tagline: "Connecting Talent with Opportunities in the Gulf",
+          description:
+            "We bridge the gap between industrial companies and skilled professionals across the Gulf region.",
+        },
+        {
+          image: "hero2.png",
+          title: "Empowering Careers",
+          tagline: "Your Future Begins Here",
+          description:
+            "Helping professionals unlock opportunities and achieve success in top industries.",
+        },
+        {
+          image: "hero3.png",
+          title: "Building Strong Partnerships",
+          tagline: "Companies + Talent = Growth",
+          description:
+            "We create meaningful connections between businesses and professionals worldwide.",
+        },
+      ];
+
+      let currentSlide = 0;
+
+      function changeSlide() {
+        const slide = slides[currentSlide];
+        hero.style.backgroundImage = `url(${slide.image})`;
+        heroTitle.textContent = slide.title;
+        heroTagline.textContent = slide.tagline;
+        heroDescription.textContent = slide.description;
+
+        currentSlide = (currentSlide + 1) % slides.length;
+      }
+
+      changeSlide();
+      setInterval(changeSlide, 5000); // change every 5 sec
+
+      // Counter animation for statistics (if needed)
+      function animateCounter(element, target, duration = 2000) {
+        let start = 0;
+        const increment = target / (duration / 16);
+
+        const animate = () => {
+          start += increment;
+          element.textContent = Math.floor(start);
+
+          if (start < target) {
+            requestAnimationFrame(animate);
+          } else {
+            element.textContent = target;
+          }
+        };
+
+        animate();
+      }
+
+      // Smooth page transitions
+      window.addEventListener("beforeunload", () => {
+        document.body.style.opacity = "0";
+      });
+
+      // Initialize page with fade-in
+      window.addEventListener("load", () => {
+        document.body.style.opacity = "1";
+        document.body.style.transition = "opacity 0.3s ease";
+      });
+    </script>
+  </body>
+</html>

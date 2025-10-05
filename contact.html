@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="logo.png" />
+    <title>Contact Us - Trinity International</title>
+    <script
+      type="text/javascript"
+      src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  </head>
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #ffffff;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Navigation */
+    .navbar {
+      background-color: #ffffff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-logo img {
+      height: 70px;
+      width: auto;
+    }
+
+    .nav-logo h2 {
+      color: #138808;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: #64748b;
+      font-weight: 500;
+      padding: 0.5rem 0;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #138808;
+    }
+
+    .nav-link.active::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #138808;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger .bar {
+      width: 25px;
+      height: 3px;
+      background-color: #138808;
+      margin: 3px 0;
+      transition: 0.3s;
+    }
+
+    /* Page Header */
+    .page-header {
+      padding: 120px 0 60px;
+      background: linear-gradient(135deg, #138808 0%, #0c8a00 100%);
+      color: white;
+      text-align: center;
+      margin-top: 70px;
+    }
+
+    .page-header h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .page-header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    /* Contact Section */
+    .contact {
+      padding: 80px 0;
+      background-color: #ffffff;
+    }
+
+    .contact-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+
+    .contact-form-section h2,
+    .contact-info-section h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 2rem;
+    }
+
+    /* Contact Form */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 0.75rem;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      background-color: #ffffff;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #138808;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .error-message {
+      color: #ef4444;
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+      display: none;
+    }
+
+    .submit-btn {
+      background: linear-gradient(135deg, #138808 0%, #0c8a00 100%);
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+    }
+
+    .form-success {
+      display: none;
+      background: #dcfce7;
+      color: #166534;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid #bbf7d0;
+      margin-top: 1rem;
+    }
+
+    /* Contact Information */
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #138808 0%, #0c8a00 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-icon svg {
+      width: 24px;
+      height: 24px;
+      color: white;
+    }
+
+    .contact-text h4 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-text p {
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    /* Map Section */
+    .map-section {
+      padding: 80px 0;
+      background-color: #f8fafc;
+    }
+
+    .map-section h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 3rem;
+    }
+
+    .map-placeholder {
+      background: white;
+      border-radius: 12px;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border: 2px dashed #e2e8f0;
+    }
+
+    .map-content {
+      text-align: center;
+      color: #64748b;
+    }
+
+    .map-icon svg {
+      width: 60px;
+      height: 60px;
+      color: #138808;
+      margin-bottom: 1rem;
+    }
+
+    .map-content h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 0.5rem;
+    }
+
+    .map-note {
+      font-style: italic;
+      margin-top: 1rem;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #000000;
+      color: white;
+      padding: 60px 0 30px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-section h3,
+    .footer-section h4 {
+      margin-bottom: 1rem;
+      color: #138808;
+    }
+
+    .footer-section h3 {
+      font-size: 1.4rem;
+    }
+
+    .footer-section h4 {
+      font-size: 1.2rem;
+    }
+
+    .footer-section p {
+      color: #ffffff;
+      line-height: 1.6;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-section ul li a {
+      color: #ffffff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section ul li a:hover {
+      color: #138808;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #374151;
+      padding-top: 2rem;
+      text-align: center;
+    }
+
+    .footer-bottom p {
+      color: #94a3b8;
+    }
+
+    /* Animation Classes */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Form Validation States */
+    .form-group input.error,
+    .form-group select.error,
+    .form-group textarea.error {
+      border-color: #ef4444;
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+    }
+
+    .form-group input.success,
+    .form-group select.success,
+    .form-group textarea.success {
+      border-color: #10b981;
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+    }
+    /* ================================
+   📱 MOBILE VIEW (Responsive Design)
+   ================================ */
+    @media (max-width: 1024px) {
+      .nav-menu {
+        gap: 1.2rem;
+      }
+      .page-header h1 {
+        font-size: 2.4rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      /* NAVIGATION */
+      .nav-container {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        height: auto;
+      }
+
+      .nav-logo img {
+        height: 55px;
+      }
+
+      .nav-menu {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 1.5rem 0;
+        display: none;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-menu.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      /* Animate hamburger */
+      .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.active .bar:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+      }
+      .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+      }
+
+      /* PAGE HEADER */
+      .page-header {
+        padding: 100px 20px 40px;
+      }
+      .page-header h1 {
+        font-size: 2rem;
+      }
+      .page-header p {
+        font-size: 1rem;
+      }
+
+      /* CONTACT SECTION */
+      .contact-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .contact-form-section h2,
+      .contact-info-section h2 {
+        font-size: 1.6rem;
+      }
+
+      /* FORM INPUTS */
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        font-size: 0.95rem;
+      }
+
+      .submit-btn {
+        width: 100%;
+        padding: 0.9rem;
+        font-size: 1rem;
+      }
+
+      /* CONTACT DETAILS */
+      .contact-item {
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .contact-icon {
+        width: 40px;
+        height: 40px;
+      }
+      .contact-icon svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      /* MAP SECTION */
+      .map-section {
+        padding: 60px 0;
+      }
+      .map-section h2 {
+        font-size: 2rem;
+      }
+      .map-placeholder {
+        height: 300px;
+      }
+
+      /* FOOTER */
+      .footer {
+        padding: 40px 20px 20px;
+      }
+      .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .footer-section h3,
+      .footer-section h4 {
+        color: #138808;
+      }
+      .footer-bottom {
+        padding-top: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-logo h2 {
+        font-size: 1.2rem;
+      }
+
+      .page-header h1 {
+        font-size: 1.6rem;
+      }
+
+      .contact-form-section h2,
+      .contact-info-section h2 {
+        font-size: 1.4rem;
+      }
+
+      .contact-text h4 {
+        font-size: 1rem;
+      }
+
+      .contact-text p {
+        font-size: 0.9rem;
+      }
+
+      .social-icon {
+        width: 40px;
+        height: 40px;
+      }
+      .social-icon svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      .footer-section p,
+      .footer-section a {
+        font-size: 0.9rem;
+      }
+
+      #google_translate_element {
+        font-size: 0.9rem;
+        margin-left: 30%;
+      }
+    }
+  </style>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <img
+            src="Trinity International_logo.png"
+            alt="Trinity International Logo" />
+          <h2>Trinity International</h2>
+        </div>
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="about.html" class="nav-link">About</a>
+          </li>
+          <li class="nav-item">
+            <a href="contact.html" class="nav-link active">Contact</a>
+          </li>
+        </ul>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <div id="google_translate_element">Translate this page:</div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="container">
+        <h1>Contact Us</h1>
+        <p>Get in touch with our team for recruitment solutions</p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+      <div class="container">
+        <div class="contact-content">
+          <!-- Contact Form -->
+          <div class="contact-form-section">
+            <h2>Send Us a Message</h2>
+            <form class="contact-form" id="contactForm">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required />
+                <span class="error-message" id="nameError"></span>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required />
+                <span class="error-message" id="emailError"></span>
+              </div>
+              <div class="form-group">
+                <label for="company">Company (Optional)</label>
+                <input type="text" id="company" name="company" />
+              </div>
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <select id="subject" name="subject" required>
+                  <option value="">Select a subject</option>
+                  <option value="job-posting">Job Posting</option>
+                  <option value="candidate-search">Candidate Search</option>
+                  <option value="partnership">Partnership</option>
+                  <option value="general">General Inquiry</option>
+                </select>
+                <span class="error-message" id="subjectError"></span>
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required></textarea>
+                <span class="error-message" id="messageError"></span>
+              </div>
+              <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+            <div class="form-success" id="formSuccess">
+              <p>Thank you for your message! We'll get back to you soon.</p>
+            </div>
+          </div>
+
+          <!-- Contact Information -->
+          <div class="contact-info-section">
+            <h2>Contact Information</h2>
+            <div class="contact-details">
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22S19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9S10.62 6.5 12 6.5 14.5 7.62 14.5 9 13.38 11.5 12 11.5Z" />
+                  </svg>
+                </div>
+                <div class="contact-text">
+                  <h4>Office Address</h4>
+                  <p>
+                    A-209,Samanvay Silicon<br />
+                    Complex,Near Dairy Den <br />
+                    Circle,Sayajigunj, <br />
+                    Vadodara - 390020 Gujarat
+                  </p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M6.62 10.79C8.06 13.62 10.38 15.94 13.21 17.38L15.41 15.18C15.69 14.9 16.08 14.82 16.43 14.93C17.55 15.3 18.75 15.5 20 15.5C20.55 15.5 21 15.95 21 16.5V20C21 20.55 20.55 21 20 21C10.61 21 3 13.39 3 4C3 3.45 3.45 3 4 3H7.5C8.05 3 8.5 3.45 8.5 4C8.5 5.25 8.7 6.45 9.07 7.57C9.18 7.92 9.1 8.31 8.82 8.59L6.62 10.79Z" />
+                  </svg>
+                </div>
+                <div class="contact-text">
+                  <h4>Phone Number</h4>
+                  <p>
+                    +91 8460597949 (Mobile)<br />
+                    +91 7226922949<br />
+                    +91 7862942625
+                  </p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" />
+                  </svg>
+                </div>
+                <div class="contact-text">
+                  <h4>Email</h4>
+                  <p>resumetrinity@yahoo.com</p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 2L2 7V10C2 16 12 22 12 22S22 16 22 10V7L12 2Z" />
+                  </svg>
+                </div>
+                <div class="contact-text">
+                  <h4>Business Hours</h4>
+                  <p>
+                    Sunday - Thursday: 9:00 AM - 6:00 PM<br />
+                    Saturday: 9:00 AM - 2:00 PM
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+      <div class="container">
+        <h2>Our Location</h2>
+        <div class="map-placeholder">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d221.68783619162133!2d73.18471133991997!3d22.308554995294887!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fcfd7cddb4697%3A0x7c96c11e8726b438!2sSamanvay%20Silicon!5e1!3m2!1sen!2sin!4v1759638984920!5m2!1sen!2sin"
+            width="100%"
+            height="400"
+            style="border: 0; border-radius: 12px"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Trinity International</h3>
+            <p>Connecting Talent with Opportunities in the Gulf</p>
+          </div>
+          <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Contact Info</h4>
+            <p>Email: resumetrinity@yahoo.com</p>
+            <p>Phone: +91 8460597949</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; Trinity International. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // --- Mobile Menu Toggle ---
+      const hamburger = document.querySelector(".hamburger");
+      const navMenu = document.querySelector(".nav-menu");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+      });
+      // --- Google Translate ---
+
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: "en",
+            includedLanguages: "en,hi,ar", // Only English, Hindi, Arabic
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+          },
+          "google_translate_element"
+        );
+      }
+      // Form Handling
+      const contactForm = document.getElementById("contactForm");
+
+      if (contactForm) {
+        contactForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+          resetFormValidation();
+
+          if (!validateForm()) return;
+
+          // Collect form data
+          const name = document.getElementById("name").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const company = document.getElementById("company").value.trim();
+          const subject = document.getElementById("subject").value;
+          const message = document.getElementById("message").value.trim();
+
+          // Receiver email
+          const toEmail = "info@trinityintl.com";
+
+          // Gmail link format
+          const gmailLink =
+            "https://mail.google.com/mail/?view=cm&fs=1" +
+            "&to=" +
+            encodeURIComponent(toEmail) +
+            "&su=" +
+            encodeURIComponent(`Inquiry: ${subject}`) +
+            "&body=" +
+            encodeURIComponent(
+              `Full Name: ${name}\nEmail: ${email}\nCompany: ${company}\n\nMessage:\n${message}`
+            );
+
+          // Open Gmail in new tab
+          window.open(gmailLink, "_blank");
+
+          // Show success message
+          document.getElementById("formSuccess").style.display = "block";
+          contactForm.reset();
+        });
+      }
+
+      // --- Validation helpers (same as before) ---
+      function validateForm() {
+        let isValid = true;
+
+        // Name validation
+        const name = document.getElementById("name");
+        if (!name.value.trim()) {
+          showError("nameError", "Name is required");
+          name.classList.add("error");
+          isValid = false;
+        } else {
+          name.classList.add("success");
+        }
+
+        // Email validation
+        const email = document.getElementById("email");
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email.value.trim()) {
+          showError("emailError", "Email is required");
+          email.classList.add("error");
+          isValid = false;
+        } else if (!emailRegex.test(email.value)) {
+          showError("emailError", "Please enter a valid email address");
+          email.classList.add("error");
+          isValid = false;
+        } else {
+          email.classList.add("success");
+        }
+
+        // Subject validation
+        const subject = document.getElementById("subject");
+        if (!subject.value) {
+          showError("subjectError", "Please select a subject");
+          subject.classList.add("error");
+          isValid = false;
+        } else {
+          subject.classList.add("success");
+        }
+
+        // Message validation
+        const message = document.getElementById("message");
+        if (!message.value.trim()) {
+          showError("messageError", "Message is required");
+          message.classList.add("error");
+          isValid = false;
+        } else if (message.value.trim().length < 10) {
+          showError(
+            "messageError",
+            "Message must be at least 10 characters long"
+          );
+          message.classList.add("error");
+          isValid = false;
+        } else {
+          message.classList.add("success");
+        }
+
+        return isValid;
+      }
+
+      function showError(elementId, message) {
+        const errorElement = document.getElementById(elementId);
+        if (errorElement) {
+          errorElement.textContent = message;
+          errorElement.style.display = "block";
+        }
+      }
+
+      function resetFormValidation() {
+        document.querySelectorAll(".error-message").forEach((el) => {
+          el.style.display = "none";
+          el.textContent = "";
+        });
+
+        document
+          .querySelectorAll(
+            ".form-group input, .form-group select, .form-group textarea"
+          )
+          .forEach((input) => {
+            input.classList.remove("error", "success");
+          });
+      }
+    </script>
+  </body>
+</html>
